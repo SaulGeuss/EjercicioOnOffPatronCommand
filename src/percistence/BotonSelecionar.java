@@ -5,7 +5,9 @@
  */
 package percistence;
 
+import java.time.Clock;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 /**
@@ -14,13 +16,33 @@ import java.util.ArrayList;
  */
 public class BotonSelecionar {
     
+    public int cont = 0;
     ArrayList<Boton> miLista = new ArrayList<>();
     
     public void agregarBoton(Boton nuevo){
         miLista.add(nuevo);
+        cont++;
+        System.out.println("Se agrego el Boton " + cont);
     }
     
-    public void quitarBotn(int Id){
-        
+    public void quitarBoton(int Id){
+        Boton miBoton = new Boton();
+        Iterator<Boton> miIterador = miLista.iterator();
+        while (miIterador.hasNext()) {            
+             miBoton = miIterador.next();
+             if (miBoton.getId() == Id) {
+                miIterador.remove();
+                System.out.println("Se elimino el Boton " + Id);
+            }
+        }
+    }
+    
+    public void listaBotones(){
+        Boton miBoton = new Boton();
+        Iterator<Boton> miIterador = miLista.iterator();
+        while (miIterador.hasNext()) {            
+             miBoton = miIterador.next();
+             System.out.println("Boton " + miBoton.getId() + " / ");
+        }
     }
 }

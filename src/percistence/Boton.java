@@ -13,6 +13,14 @@ public class Boton {
     
     private int id;
     private Boolean estado;
+    
+    public Boton(){  
+    }
+    
+    public  Boton(int id, Boolean estado){
+        this.id = id;
+        this.estado = estado;
+    }
 
     public int getId() {
         return id;
