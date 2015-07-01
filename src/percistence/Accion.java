@@ -9,6 +9,9 @@ package percistence;
  *
  * @author adiseño.2015
  */
+
+////INVOKER
+
 public class Accion {
     
     public Boolean On(){
