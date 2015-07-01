@@ -17,6 +17,7 @@ import java.util.Iterator;
 public class BotonSelecionar {
     
     public int cont = 0;
+    Accion miAccion = new Accion();
     ArrayList<Boton> miLista = new ArrayList<>();
     
     public BotonSelecionar(){
@@ -29,18 +30,23 @@ public class BotonSelecionar {
         System.out.println("Se agrego el Boton " + cont);
     }
     
-    public void cambiarEstadoBoton(int Id, Boolean estado){
+    public void cambiarEstadoBoton(int Id){
         Boton miBoton = new Boton();
         Iterator<Boton> miIterador = miLista.iterator();
         while (miIterador.hasNext()) {            
              miBoton = miIterador.next();
              if (miBoton.getId() == Id) {
-                miBoton.setEstado(estado);
-                 if (estado == true) {
-                     System.out.println("Se cambio el estdo del Boton " + Id + " On");
-                 } else {
-                     System.out.println("Se cambio el estdo del Boton " + Id + " Off");
+                 
+                 if (miBoton.getEstado() != miAccion.On()) {
+                     miBoton.setEstado(Boolean.TRUE);
+                     System.out.println("Se cambio el estado del Boton " + Id + " a On");
+                 } else{
+                    if (miBoton.getEstado() != miAccion.Off()) {
+                        miBoton.setEstado(Boolean.FALSE);
+                        System.out.println("Se cambio el estado del Boton " + Id + " a Off");
+                    }
                  }
+                 
             }
         }
     }
@@ -62,7 +68,11 @@ public class BotonSelecionar {
         Iterator<Boton> miIterador = miLista.iterator();
         while (miIterador.hasNext()) {            
              miBoton = miIterador.next();
-             System.out.println("Boton " + miBoton.getId() + " / ");
+             if (miBoton.getEstado() == Boolean.TRUE) {
+                 System.out.println("Boton " + miBoton.getId() + ", estado = On" + " / ");
+            } else {
+                 System.out.println("Boton " + miBoton.getId() + ", estado = Off" + " / ");
+            }
         }
     }
 }

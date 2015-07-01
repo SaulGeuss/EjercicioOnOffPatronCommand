@@ -21,7 +21,7 @@ public class ComandoOn implements Command{
             
     @Override
     public void Execute() {
-        miBotonSelec.cambiarEstadoBoton(IdBoton, miAccion.On());
+        miBotonSelec.cambiarEstadoBoton(IdBoton);
     }
     
     
